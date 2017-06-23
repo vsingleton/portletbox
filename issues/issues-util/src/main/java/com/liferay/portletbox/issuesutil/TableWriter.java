@@ -44,7 +44,7 @@ import java.io.PrintWriter;
 
 public class TableWriter {
 
-   final int NUMBER_OF_COLUMNS = 3;
+   final int NUMBER_OF_COLUMNS = 1;
    int colCounter = 0;
    int numColumns = NUMBER_OF_COLUMNS;
    PrintWriter writer = null;
@@ -73,7 +73,7 @@ public class TableWriter {
     */
    public void startTable () {
       colCounter = 0;
-      writer.write("<table border='0' cellpadding='4'><tr>");
+      writer.write("<table border='0' cellpadding='4' style='border-collapse:collapse; table-layout:fixed; width:100%; word-wrap: break-word;' ><tr>");
    }
 
    /**
@@ -96,8 +96,11 @@ public class TableWriter {
       writer.write(urlAsString);
       writer.write("\">");
       writer.write(comment);
-      writer.write(HTMLUtil.BR_TAG);
       writer.write("</a>");
+      writer.write(HTMLUtil.BR_TAG);
+      // writer.write("<nobr>");
+      writer.write(urlAsString);
+      // writer.write("</nobr>");
       writer.write("</td>");
       if (++colCounter % numColumns == 0) {
          writer.write("</tr><tr>");

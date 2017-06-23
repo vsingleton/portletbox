@@ -85,15 +85,16 @@ public class HTMLUtil {
 		Map<String, String[]> parameterMap) throws IOException {
 		Set<Entry<String, String[]>> entrySet = parameterMap.entrySet();
 
-		writer.write("mapName=" + mapName + ":");
-		writer.write(BR_TAG);
+		// writer.write("mapName=" + mapName + ":");
+		// writer.write(BR_TAG);
+		writer.write(mapName + ":" + BR_TAG);
 
 		for (Map.Entry<String, String[]> mapEntry : entrySet) {
 			String key = mapEntry.getKey();
 			String[] values = mapEntry.getValue();
 
 			for (int i = 0; i < values.length; i++) {
-				writer.write("key=[" + key + "] values[" + i + "]=[" + values[i] + "]");
+				writer.write( key + ", " + i + "=" + values[i]);
 				writer.write(BR_TAG);
 			}
 		}
@@ -114,7 +115,7 @@ public class HTMLUtil {
 			String[] values = req.getParameterValues(name);
 
 			for (int i = 0; i < values.length; i++) {
-				writer.write("Name=[" + name + "] values[" + i + "]=[" + values[i] + "]");
+				writer.write(name + ", " + i + "=" + values[i]);
 				writer.write(HTMLUtil.BR_TAG);
 			}
 		}
